@@ -122,7 +122,12 @@ namespace GmHelper
                 }
                 else
                 {
-                    selectFolderButton_Click(null, EventArgs.Empty);
+                    if (folderPath  == null)
+                    {
+                        selectFolderButton_Click(null, EventArgs.Empty); ;
+                    }
+
+                    
                 }
             }
         }
