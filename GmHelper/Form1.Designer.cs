@@ -31,37 +31,26 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.searchTextBox = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.searchButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mutesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mutesButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchTextBox
             // 
-            this.searchTextBox.Location = new System.Drawing.Point(12, 40);
+            this.searchTextBox.Location = new System.Drawing.Point(7, 40);
             this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(224, 20);
+            this.searchTextBox.Size = new System.Drawing.Size(237, 20);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Click += new System.EventHandler(this.searchTextBox_Click);
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 68);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(161, 63);
+            this.searchButton.Location = new System.Drawing.Point(7, 68);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(75, 23);
             this.searchButton.TabIndex = 2;
@@ -79,8 +68,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.mutesToolStripMenuItem,
-            this.fAQToolStripMenuItem});
+            this.mutesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(250, 24);
@@ -103,20 +91,23 @@
             this.mutesToolStripMenuItem.Text = "M&utes";
             this.mutesToolStripMenuItem.Click += new System.EventHandler(this.mutesToolStripMenuItem_Click);
             // 
-            // fAQToolStripMenuItem
+            // mutesButton
             // 
-            this.fAQToolStripMenuItem.Name = "fAQToolStripMenuItem";
-            this.fAQToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.fAQToolStripMenuItem.Text = "&FAQ";
-            this.fAQToolStripMenuItem.Click += new System.EventHandler(this.fAQToolStripMenuItem_Click);
+            this.mutesButton.Location = new System.Drawing.Point(88, 68);
+            this.mutesButton.Name = "mutesButton";
+            this.mutesButton.Size = new System.Drawing.Size(75, 23);
+            this.mutesButton.TabIndex = 5;
+            this.mutesButton.Text = "button1";
+            this.mutesButton.UseVisualStyleBackColor = true;
+            this.mutesButton.Click += new System.EventHandler(this.mutesButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 114);
+            this.ClientSize = new System.Drawing.Size(250, 109);
+            this.Controls.Add(this.mutesButton);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.searchTextBox);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -139,13 +130,12 @@
         #endregion
 
         private System.Windows.Forms.TextBox searchTextBox;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Button searchButton;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mutesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fAQToolStripMenuItem;
+        private System.Windows.Forms.Button mutesButton;
     }
 }
 

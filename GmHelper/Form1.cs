@@ -8,17 +8,20 @@ namespace GmHelper
 {
     public partial class Form1 : Form
     {
-        private string folderPath;
-        private readonly string Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
-        private readonly string Text2 = "Configuración.";
-        private readonly string Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
-        private readonly string Text4 = "Resultados de la búsqueda";
-        private readonly string Text5 = "No se encontraron coincidencias.";
-        private readonly string Text6 = "ID misión";
-        private readonly string Text7 = "Buscar en WowHead";
-        private readonly string Text8 = "Buscar";
-      
-        
+        private string macrosfolderPath = String.Empty;
+        private string mutesPath = string.Empty;
+        private readonly string F1Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
+        private readonly string F1Text2 = "Configuración.";
+        private readonly string F1Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
+        private readonly string F1Text4 = "Desea buscar en WowHead ?";
+        private readonly string F1Text5 = "No se encontraron coincidencias.";
+        private readonly string F1Text6 = "ID misión";
+        private readonly string F1Text8 = "Buscar";
+        private readonly string F1Text9 = "Mutes";
+        private readonly string F1Text10 = "FAQ";
+        private readonly string F1Text11 = "Seleccione el archivo donde se encuentran sus sanciones.";
+
+
         public Form1()
         {
             InitializeComponent();
@@ -26,22 +29,25 @@ namespace GmHelper
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            searchTextBox.Text = Text6;
-            checkBox1.Text = Text7;
-            searchButton.Text = Text8;
+            searchTextBox.Text = F1Text6;
+            searchButton.Text = F1Text8;
+            mutesButton.Text = F1Text9;
+            
           
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
 
             if (registryKey != null)
             {
-                folderPath = (string)registryKey.GetValue("folderPath");
+                macrosfolderPath = (string)registryKey.GetValue("macrosfolderPath");
+                mutesPath = (string)registryKey.GetValue("mutesPath");
                 registryKey.Close();
             }
 
             else
             {
-                MessageBox.Show(Text1, Text2);
                 menuToolStripMenuItem_Click(null, EventArgs.Empty);
+                mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+
             }
 
         }
@@ -78,7 +84,7 @@ namespace GmHelper
         private void searchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = searchTextBox.Text;
-            string[] files = Directory.GetFiles(folderPath);
+            string[] files = Directory.GetFiles(macrosfolderPath);
             string resultFiles = "";
 
             foreach (string file in files)
@@ -92,21 +98,30 @@ namespace GmHelper
 
             if (resultFiles.Length > 0)
             {
-                MessageBox.Show(Text3 + resultFiles, Text4);
-                if (checkBox1.Checked == true)
+                DialogResult result = MessageBox.Show(F1Text3 + resultFiles, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
                     string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
                     Process.Start(wowheadLink);
                 }
+                
+               
             }
             else
             {
-                MessageBox.Show(Text5, Text4);
+                DialogResult result = MessageBox.Show(F1Text5, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
+                    Process.Start(wowheadLink);
+                }
+                
             }
         }
 
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(F1Text1, F1Text2);
             using (var folderBrowserDialog = new FolderBrowserDialog())
             {
                 DialogResult result = folderBrowserDialog.ShowDialog();
@@ -114,32 +129,56 @@ namespace GmHelper
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
                     string selectedFolderPath = folderBrowserDialog.SelectedPath;
-                    folderPath = selectedFolderPath;
+                    macrosfolderPath = selectedFolderPath;
 
                     RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
-                    registryKey.SetValue("folderPath", folderPath);
+                    registryKey.SetValue("macrosfolderPath", macrosfolderPath);
                     registryKey.Close();
                 }
                 else
                 {
-                    if (folderPath == null)
+                    if (macrosfolderPath.Length == 0)
                     {
-                        menuToolStripMenuItem_Click(null, EventArgs.Empty); ;
+                        menuToolStripMenuItem_Click(null, EventArgs.Empty);
                     }
-
-
+                    
                 }
             }
         }
 
         private void mutesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("No implementado", "Info");
+            MessageBox.Show(F1Text11, F1Text2);
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                mutesPath = openFileDialog1.FileName;
+                RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
+                registryKey.SetValue("mutesPath", mutesPath);
+                registryKey.Close();
+            }
+            else
+            {
+                if (mutesPath.Length == 0)
+                {
+                    mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+                }
+             
+            }
         }
 
-        private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mutesButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("No implementado", "Info");
+            if (mutesPath != String.Empty)
+            {
+
+                mutesForm frm = new mutesForm(mutesPath);
+                frm.Show();
+            }
         }
     }
 }
