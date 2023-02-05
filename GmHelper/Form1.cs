@@ -19,10 +19,7 @@ namespace GmHelper
         private readonly string F1Text6 = "ID misión";
         private readonly string F1Text8 = "Buscar";
         private readonly string F1Text9 = "Mutes";
-        private readonly string F1Text10 = "FAQ";
         private readonly string F1Text11 = "Seleccione el archivo donde se encuentran sus sanciones.";
-
-
         public Form1()
         {
             InitializeComponent();
@@ -33,8 +30,7 @@ namespace GmHelper
             searchTextBox.Text = F1Text6;
             searchButton.Text = F1Text8;
             mutesButton.Text = F1Text9;
-            
-          
+
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
 
             if (registryKey != null)
@@ -48,13 +44,8 @@ namespace GmHelper
             {
                 menuToolStripMenuItem_Click(null, EventArgs.Empty);
                 mutesToolStripMenuItem_Click(null, EventArgs.Empty);
-
             }
-
         }
-
-
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             switch (RectangleToScreen(Bounds).Contains(PointToScreen(Cursor.Position)))
@@ -64,24 +55,20 @@ namespace GmHelper
                     else
                     {
                         Opacity += 0.20;
-
                     }
                     break;
                 case false:
                     if (Opacity >= 0.21)
                     {
                         Opacity -= 0.20;
-
                     }
                     break;
             }
         }
-
         private void searchTextBox_Click(object sender, EventArgs e)
         {
             searchTextBox.Text = String.Empty;
         }
-
         private void searchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = searchTextBox.Text;
@@ -105,8 +92,6 @@ namespace GmHelper
                     string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
                     Process.Start(wowheadLink);
                 }
-                
-               
             }
             else
             {
@@ -116,10 +101,15 @@ namespace GmHelper
                     string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
                     Process.Start(wowheadLink);
                 }
-                
             }
         }
-
+        private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchButton_Click(null, EventArgs.Empty);
+            }
+        }
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(F1Text1, F1Text2);
@@ -131,7 +121,6 @@ namespace GmHelper
                 {
                     string selectedFolderPath = folderBrowserDialog.SelectedPath;
                     macrosfolderPath = selectedFolderPath;
-
                     RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
                     registryKey.SetValue("macrosfolderPath", macrosfolderPath);
                     registryKey.Close();
@@ -142,11 +131,9 @@ namespace GmHelper
                     {
                         menuToolStripMenuItem_Click(null, EventArgs.Empty);
                     }
-                    
                 }
             }
         }
-
         private void mutesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(F1Text11, F1Text2);
@@ -168,10 +155,8 @@ namespace GmHelper
                 {
                     mutesToolStripMenuItem_Click(null, EventArgs.Empty);
                 }
-             
             }
         }
-
         private void mutesButton_Click(object sender, EventArgs e)
         {
 
@@ -188,7 +173,7 @@ namespace GmHelper
             {
                 form.Close();
             }
-            
-        }
+        }       
+
     }
 }

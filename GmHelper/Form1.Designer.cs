@@ -42,11 +42,13 @@
             // 
             // searchTextBox
             // 
+            this.searchTextBox.AcceptsReturn = true;
             this.searchTextBox.Location = new System.Drawing.Point(7, 40);
             this.searchTextBox.Name = "searchTextBox";
             this.searchTextBox.Size = new System.Drawing.Size(237, 20);
             this.searchTextBox.TabIndex = 0;
             this.searchTextBox.Click += new System.EventHandler(this.searchTextBox_Click);
+            this.searchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTextBox_KeyDown);
             // 
             // searchButton
             // 
@@ -125,6 +127,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void SearchTextBox_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion
