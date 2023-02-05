@@ -9,15 +9,16 @@ namespace GmHelper
     public partial class Form1 : Form
     {
         private string folderPath;
-        private string Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
-        private string Text2 = "Configuración.";
-        private string Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
-        private string Text4 = "Resultados de la búsqueda";
-        private string Text5 = "No se encontraron coincidencias.";
-        private string Text6 = "ID misión";
-        private string Text7 = "Buscar en WowHead";
-        private string Text8 = "Buscar";
-        private string Text9 = "Carpeta Macros";
+        private readonly string Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
+        private readonly string Text2 = "Configuración.";
+        private readonly string Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
+        private readonly string Text4 = "Resultados de la búsqueda";
+        private readonly string Text5 = "No se encontraron coincidencias.";
+        private readonly string Text6 = "ID misión";
+        private readonly string Text7 = "Buscar en WowHead";
+        private readonly string Text8 = "Buscar";
+      
+        
         public Form1()
         {
             InitializeComponent();
@@ -28,8 +29,7 @@ namespace GmHelper
             searchTextBox.Text = Text6;
             checkBox1.Text = Text7;
             searchButton.Text = Text8;
-            selectFolderButton.Text = Text9;
-
+          
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
 
             if (registryKey != null)
@@ -41,7 +41,7 @@ namespace GmHelper
             else
             {
                 MessageBox.Show(Text1, Text2);
-                selectFolderButton_Click(null, EventArgs.Empty);
+                menuToolStripMenuItem_Click(null, EventArgs.Empty);
             }
 
         }
@@ -105,7 +105,7 @@ namespace GmHelper
             }
         }
 
-        private void selectFolderButton_Click(object sender, EventArgs e)
+        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
             {
@@ -122,14 +122,24 @@ namespace GmHelper
                 }
                 else
                 {
-                    if (folderPath  == null)
+                    if (folderPath == null)
                     {
-                        selectFolderButton_Click(null, EventArgs.Empty); ;
+                        menuToolStripMenuItem_Click(null, EventArgs.Empty); ;
                     }
 
-                    
+
                 }
             }
+        }
+
+        private void mutesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No implementado", "Info");
+        }
+
+        private void fAQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No implementado", "Info");
         }
     }
 }
