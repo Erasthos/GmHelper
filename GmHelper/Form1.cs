@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace GmHelper
@@ -173,12 +174,21 @@ namespace GmHelper
 
         private void mutesButton_Click(object sender, EventArgs e)
         {
-            if (mutesPath != String.Empty)
-            {
 
-                mutesForm frm = new mutesForm(mutesPath);
-                frm.Show();
+            mutesForm form = Application.OpenForms.OfType<mutesForm>().FirstOrDefault();
+            if (form == null)
+            {
+                if (mutesPath != String.Empty)
+                {
+                    mutesForm frm = new mutesForm(mutesPath);
+                    frm.Show();
+                }
             }
+            else
+            {
+                form.Close();
+            }
+            
         }
     }
 }
