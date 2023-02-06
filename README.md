@@ -14,3 +14,11 @@ Junto al Binario se incluye una carpeta de macros y un archivo de sanciones a mo
 
 https://youtu.be/GgTwoz1pQ60
 
+
+ChangeLog.
+
+06/02/23
+
+Se ha agregado una nueva función la cual permite buscar directamente en WowHead.
+
+
