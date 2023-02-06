@@ -69,46 +69,63 @@ namespace GmHelper
         {
             searchTextBox.Text = String.Empty;
         }
-        private void searchButton_Click(object sender, EventArgs e)
-        {
-            string searchTerm = searchTextBox.Text;
-            string[] files = Directory.GetFiles(macrosfolderPath);
-            string resultFiles = "";
-
-            foreach (string file in files)
-            {
-                string fileText = File.ReadAllText(file);
-                if (fileText.Contains(searchTerm))
-                {
-                    resultFiles += Path.GetFileName(file) + "\n";
-                }
-            }
-
-            if (resultFiles.Length > 0)
-            {
-                DialogResult result = MessageBox.Show(F1Text3 + resultFiles, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
-                    Process.Start(wowheadLink);
-                }
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show(F1Text5, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
-                    Process.Start(wowheadLink);
-                }
-            }
-        }
         private void searchTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 searchButton_Click(null, EventArgs.Empty);
             }
+        }
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string searchTerm = searchTextBox.Text;
+            int r;
+            bool success = int.TryParse(searchTerm, out r);
+
+            if (success) 
+            {
+                string[] files = Directory.GetFiles(macrosfolderPath);
+                string resultFiles = "";
+
+                foreach (string file in files)
+                {
+                    string fileText = File.ReadAllText(file);
+                    if (fileText.Contains(searchTerm))
+                    {
+                        resultFiles += Path.GetFileName(file) + "\n";
+                    }
+                }
+
+                if (resultFiles.Length > 0)
+                {
+                    DialogResult result = MessageBox.Show(F1Text3 + resultFiles, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
+                        Process.Start(wowheadLink);
+                    }
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show(F1Text5, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
+                        Process.Start(wowheadLink);
+                    }
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(F1Text4, F1Text5, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    string wowheadLink = "https://www.wowhead.com/es/search?q=" + searchTerm;
+                    Process.Start(wowheadLink);
+                }
+            }
+
+            
         }
         private void menuToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -161,13 +178,11 @@ namespace GmHelper
         {
 
             mutesForm form = Application.OpenForms.OfType<mutesForm>().FirstOrDefault();
-            if (form == null)
+
+            if (form == null && mutesPath != String.Empty)
             {
-                if (mutesPath != String.Empty)
-                {
-                    mutesForm frm = new mutesForm(mutesPath);
-                    frm.Show();
-                }
+                mutesForm frm = new mutesForm(mutesPath);
+                frm.Show();              
             }
             else
             {
