@@ -19,6 +19,6 @@ ChangeLog.
 
 06/02/23
 
-Se ha agregado una nueva función la cual permite buscar directamente en WowHead.
+Se ha agregado una nueva función la cual permite buscar directamente en WowHead ya sea por ID o nombre de la misión.
 
 
