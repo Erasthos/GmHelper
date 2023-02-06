@@ -12,5 +12,5 @@ Además, permite tener fácilmente accesibles las normas del servidor para ser u
 
 Junto al Binario se incluye una carpeta de macros y un archivo de sanciones a modod e ejemplo.
 
-https://youtu.be/w0DpEkUxrvU
+https://youtu.be/GgTwoz1pQ60
 
