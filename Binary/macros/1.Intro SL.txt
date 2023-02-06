@@ -1,0 +1,40 @@
+MACRO 1 
+
+/g Inicio Alianza
+.lookup quest 60545
+/g Inicio Horda
+.lookup quest 61874
+/g Introduccion 
+.lookup quest 59751
+.lookup quest 59752
+.lookup quest 59907
+.lookup quest 59753
+.lookup quest 59914
+.lookup quest 59754
+.lookup quest 59755
+.lookup quest 59756
+.lookup quest 59756
+.lookup quest 59757
+.lookup quest 59758
+.lookup quest 59915
+.lookup quest 59759
+.lookup quest 59760
+.lookup quest 59761
+.lookup quest 59776
+.lookup quest 59762
+.lookup quest 59765
+.lookup quest 59766
+.lookup quest 60644
+.lookup quest 59767
+.lookup quest 59770
+/Llegada a Shadowland
+.lookup quest 60129
+.lookup quest 60148
+.lookup quest 60149
+.lookup quest 60150
+.lookup quest 60151
+.lookup quest 60152
+.lookup quest 60154
+.lookup quest 60156
+
+

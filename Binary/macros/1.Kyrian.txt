@@ -1,0 +1,50 @@
+/g Capitulo 1 "Entre los Kyrianos"
+.lookup quest 63211
+.lookup quest 60491
+.lookup quest 60492
+.lookup quest 57895
+.lookup quest 62789
+.lookup quest 62790
+.lookup quest 62698
+.lookup quest 62692
+.lookup quest 62791
+.lookup quest 62792
+.lookup quest 57905
+.lookup quest 62832
+/g Comun para todas las curias
+.lookup quest 62882
+.lookup quest 60287
+.lookup quest 61355
+.lookup quest 60289
+.lookup quest 62837
+/g Continuacion Kyrian
+.lookup quest 62796
+.lookup quest 62793
+.lookup quest 62794
+.lookup quest 57897
+.lookup quest 57898
+.lookup quest 60504
+.lookup quest 62795
+.lookup quest 57904
+/g Capitulo 2. "Torghast".
+.lookup quest 63029
+.lookup quest 60136
+.lookup quest 61099
+.lookup quest 62967
+.lookup quest 60268
+.lookup quest 60269
+.lookup quest 60270
+.lookup quest 60271
+.lookup quest 60272
+/g Capitulo 3 "Prueba de ascensión" *Requisito renombre 5*
+.lookup quest 58787
+.lookup quest 58788
+.lookup quest 58789
+.lookup quest 58790
+.lookup quest 58791
+.lookup quest 58948
+.lookup quest 58949
+
+
+
+

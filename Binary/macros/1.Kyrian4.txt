@@ -1,0 +1,23 @@
+/g Capitulo 8 "Aproximación" *Requisito renombre 20*
+.lookup quest 57113
+.lookup quest 57114
+.lookup quest 57115
+.lookup quest 57116
+.lookup quest 57120
+.lookup quest 57118
+.lookup quest 57117
+.lookup quest 57207
+.lookup quest 57121
+.lookup quest 57122
+.lookup quest 57123
+.lookup quest 57124
+.lookup quest 57125
+.lookup quest 62555
+/g Capitulo 9 "El tañido de la campana" *Requisito renombre 22*
+.lookup quest 58854
+.lookup quest 58844
+.lookup quest 58846
+.lookup quest 58847
+.lookup quest 59919
+.lookup quest 62557
+

@@ -1,0 +1,30 @@
+/g Capitulo 6 "El sello de contrición" *Requisito renombre 13*
+.lookup quest 58557
+.lookup quest 58558
+.lookup quest 58559
+.lookup quest 58560
+.lookup quest 58562
+.lookup quest 58561
+.lookup quest 58563
+.lookup quest 58564
+.lookup quest 58565
+.lookup quest 58567
+.lookup quest 58568
+.lookup quest 58566
+.lookup quest 58569
+.lookup quest 58570
+.lookup quest 58571
+/g Capitulo 7 "Un receptáculo de Ardenweald" *Requisito renombre 17*
+.lookup quest 58775
+.lookup quest 58856
+.lookup quest 58832
+.lookup quest 58816
+.lookup quest 58905
+.lookup quest 58937
+.lookup quest 58938
+.lookup quest 58939
+.lookup quest 58857
+.lookup quest 58995
+.lookup quest 58997
+.lookup quest 61135
+.lookup quest 61697

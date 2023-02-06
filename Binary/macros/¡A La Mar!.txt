@@ -1,0 +1,16 @@
+/h ¡A La Mar!
+.lookup quest 53370
+.lookup quest 51795
+.lookup quest 52946
+.lookup quest 51211
+.lookup quest 52428
+.lookup quest 51403
+.lookup quest 46727
+.lookup quest 46728
+.lookup quest 51341
+.lookup quest 47098
+.lookup quest 47099
+.lookup quest 46729
+.lookup quest 52128
+.lookup quest 47186
+.lookup quest 47189

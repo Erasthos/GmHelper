@@ -1,0 +1,40 @@
+/g Continuacion Capitulo 3
+.lookup quest 58950
+.lookup quest 58951
+.lookup quest 58792
+.lookup quest 58793
+.lookup quest 58795
+.lookup quest 58796
+.lookup quest 58797
+.lookup quest 58798
+/g Capitulo 4 "Phaestus, Génesis de eones" *Requisito renombre 8*
+.lookup quest 58175
+.lookup quest 58177
+.lookup quest 58179
+.lookup quest 58176
+.lookup quest 58180
+.lookup quest 58178
+.lookup quest 58182
+.lookup quest 58183
+.lookup quest 58181
+/g Capitulo 5 "Castigo merecido" *Requisito renombre 11*
+.lookup quest 61785
+.lookup quest 61767
+.lookup quest 61768
+.lookup quest 61769
+.lookup quest 61770
+.lookup quest 61771
+.lookup quest 61772
+.lookup quest 61773
+.lookup quest 61774
+.lookup quest 61775
+.lookup quest 61776
+.lookup quest 61777
+.lookup quest 61778
+.lookup quest 61779
+.lookup quest 61780
+.lookup quest 61781
+.lookup quest 61782
+.lookup quest 61876
+.lookup quest 61877
+.lookup quest 61878
