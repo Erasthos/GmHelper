@@ -53,10 +53,14 @@ namespace GmHelper
             {
                 MessageBox.Show("Error al leer el archivo: " + ex.Message);
             }
-            int maxY = panel1.Controls.OfType<TextBox>().Max(x => x.Bottom);
-            int maxX = panel1.Controls.OfType<Button>().Max(x => x.Right);
-            this.Height = maxY + 60;
-            this.Width = maxX + 30;
+         
+
+                int maxY = panel1.Controls.OfType<TextBox>().Max(x => x.Bottom);
+                int maxX = panel1.Controls.OfType<Button>().Max(x => x.Right);
+                this.Height = maxY + 60;
+                this.Width = maxX + 30;
+           
+
         }
     }
 }

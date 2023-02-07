@@ -84,7 +84,7 @@
             this.menuToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M)));
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.menuToolStripMenuItem.Text = "&Macros";
-            this.menuToolStripMenuItem.Click += new System.EventHandler(this.menuToolStripMenuItem_Click);
+            this.menuToolStripMenuItem.Click += new System.EventHandler(this.macrosToolStripMenuItem_Click);
             // 
             // mutesToolStripMenuItem
             // 

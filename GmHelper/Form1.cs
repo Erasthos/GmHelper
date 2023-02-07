@@ -24,7 +24,6 @@ namespace GmHelper
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             searchTextBox.Text = F1Text6;
@@ -39,10 +38,9 @@ namespace GmHelper
                 mutesPath = (string)registryKey.GetValue("mutesPath");
                 registryKey.Close();
             }
-
             else
             {
-                menuToolStripMenuItem_Click(null, EventArgs.Empty);
+                macrosToolStripMenuItem_Click(null, EventArgs.Empty);
                 mutesToolStripMenuItem_Click(null, EventArgs.Empty);
             }
         }
@@ -78,9 +76,14 @@ namespace GmHelper
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
+            if (!Directory.Exists(macrosfolderPath))
+            {
+                macrosToolStripMenuItem_Click(null, EventArgs.Empty);
+            }
+
             string searchTerm = searchTextBox.Text;
-            int r;
-            bool success = int.TryParse(searchTerm, out r);
+           
+            bool success = int.TryParse(searchTerm, out int r);
 
             if (success) 
             {
@@ -127,7 +130,7 @@ namespace GmHelper
 
             
         }
-        private void menuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void macrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(F1Text1, F1Text2);
             using (var folderBrowserDialog = new FolderBrowserDialog())
@@ -146,7 +149,7 @@ namespace GmHelper
                 {
                     if (macrosfolderPath.Length == 0)
                     {
-                        menuToolStripMenuItem_Click(null, EventArgs.Empty);
+                        macrosToolStripMenuItem_Click(null, EventArgs.Empty);
                     }
                 }
             }
@@ -178,6 +181,13 @@ namespace GmHelper
         {
 
             mutesForm form = Application.OpenForms.OfType<mutesForm>().FirstOrDefault();
+
+            if (!File.Exists(mutesPath))
+            {
+                mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+                
+
+            }
 
             if (form == null && mutesPath != String.Empty)
             {
