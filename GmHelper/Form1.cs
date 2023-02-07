@@ -243,7 +243,7 @@ namespace GmHelper
 
             if (!File.Exists(extraPath_2))
             {
-                extra_1_ToolStripMenuItem_Click(null, EventArgs.Empty);
+                extra_2_ToolStripMenuItem_Click(null, EventArgs.Empty);
 
 
             }
