@@ -20,8 +20,7 @@ namespace GmHelper
         private readonly string F1Text8 = "Buscar";
         private readonly string F1Text9 = "Mutes";
         private readonly string F1Text11 = "Seleccione el archivo donde se encuentran sus sanciones.";
-        private readonly string F1Text12 = "El uso de este programa se realiza bajo la responsabilidad exclusiva del usuario. Nosotros, como proveedores del programa, no garantizamos su correcto funcionamiento ni asumimos responsabilidad alguna por cualquier daño directo, indirecto, incidental, especial, consecuente o ejemplar que pudiera resultar del uso del mismo. El usuario es el único responsable de tomar las precauciones necesarias para asegurarse de que cualquier material disponible a través de este programa cumpla sus necesidades específicas.";
-        private readonly string F1Text13 = "Declaración de no responsabilidad";
+
         public Form1()
         {
             InitializeComponent();
@@ -34,16 +33,7 @@ namespace GmHelper
 
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
 
-            if (registryKey == null)
-            {
-
-                DialogResult result = MessageBox.Show(F1Text12, F1Text13, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.No)
-                {
-                    Application.Exit();
-                }
-
-            }
+         
 
             if (registryKey != null)
             {
