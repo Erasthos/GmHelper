@@ -25,6 +25,8 @@ namespace GmHelper
         public Form1()
         {
             InitializeComponent();
+           
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -80,17 +82,37 @@ namespace GmHelper
             {
                 searchButton_Click(null, EventArgs.Empty);
             }
+
+         
         }
         private void searchButton_Click(object sender, EventArgs e)
         {
+            
+
             if (!Directory.Exists(macrosfolderPath))
             {
                 macrosToolStripMenuItem_Click(null, EventArgs.Empty);
             }
 
-            string searchTerm = searchTextBox.Text;
-           
+            int indexOfColon = searchTextBox.Text.IndexOf(':');
+            string searchTerm = indexOfColon >= 0 ? searchTextBox.Text.Substring(indexOfColon + 1) : searchTextBox.Text;
             bool success = int.TryParse(searchTerm, out int r);
+            string wowheadLink = "https://www.wowhead.com/es/quest=" + searchTerm;
+
+            if (searchTextBox.Text.ToLower().Contains("i:"))
+            {
+                wowheadLink = "https://wowhead.com/es/item=" + searchTerm;
+                success = false;
+            }
+
+            if (searchTextBox.Text.ToLower().Contains("a:"))
+            {
+                wowheadLink = "https://www.wowhead.com/es/achievement=" + searchTerm;
+                success = false;
+            }
+
+
+                    
 
             if (success) 
             {
@@ -108,29 +130,29 @@ namespace GmHelper
 
                 if (resultFiles.Length > 0)
                 {
-                    DialogResult result = MessageBox.Show(F1Text3 + resultFiles, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show(F1Text3 + resultFiles, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.None);
                     if (result == DialogResult.Yes)
                     {
-                        string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
+                       
                         Process.Start(wowheadLink);
                     }
                 }
                 else
                 {
-                    DialogResult result = MessageBox.Show(F1Text5, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show(F1Text5, F1Text4, MessageBoxButtons.YesNo, MessageBoxIcon.None);
                     if (result == DialogResult.Yes)
                     {
-                        string wowheadLink = "https://wowhead.com/es/quest=" + searchTerm;
+                        
                         Process.Start(wowheadLink);
                     }
                 }
             }
             else
             {
-                DialogResult result = MessageBox.Show(F1Text4, F1Text5, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+                // DialogResult result = MessageBox.Show("cadena", F1Text5, MessageBoxButtons.YesNo, MessageBoxIcon.None);
+                if (!success )
                 {
-                    string wowheadLink = "https://www.wowhead.com/es/search?q=" + searchTerm;
+                    
                     Process.Start(wowheadLink);
                 }
             }
@@ -262,5 +284,8 @@ namespace GmHelper
                 form.Close();
             }
         }
+
+       
+
     }
 }

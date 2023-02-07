@@ -101,14 +101,14 @@
             // extra_1_ToolStripMenuItem
             // 
             this.extra_1_ToolStripMenuItem.Name = "extra_1_ToolStripMenuItem";
-            this.extra_1_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.extra_1_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.extra_1_ToolStripMenuItem.Text = "Notas 1";
             this.extra_1_ToolStripMenuItem.Click += new System.EventHandler(this.extra_1_ToolStripMenuItem_Click);
             // 
             // extra_2_ToolStripMenuItem
             // 
             this.extra_2_ToolStripMenuItem.Name = "extra_2_ToolStripMenuItem";
-            this.extra_2_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.extra_2_ToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.extra_2_ToolStripMenuItem.Text = "Notas 2";
             this.extra_2_ToolStripMenuItem.Click += new System.EventHandler(this.extra_2_ToolStripMenuItem_Click);
             // 
@@ -146,7 +146,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Opacity = 0.2D;
             this.Text = "GmHelper";
