@@ -14,7 +14,6 @@ namespace GmHelper
         private string extraPath_2 = string.Empty;
         private string LastDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         private readonly string F1Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
-        private readonly string F1Text2 = "Configuración.";
         private readonly string F1Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
         private readonly string F1Text4 = "Desea buscar en WowHead ?";
         private readonly string F1Text5 = "No se encontraron coincidencias.";
@@ -140,11 +139,12 @@ namespace GmHelper
         }
         private void macrosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(F1Text1, F1Text2);
+            
             using (var folderBrowserDialog = new FolderBrowserDialog())
             {
+                folderBrowserDialog.Description = F1Text1;
                 DialogResult result = folderBrowserDialog.ShowDialog();
-
+                
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
                     string selectedFolderPath = folderBrowserDialog.SelectedPath;
@@ -164,8 +164,9 @@ namespace GmHelper
         }
         private void extra_1_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(F1Text11, F1Text2);
+            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = F1Text11;
             openFileDialog1.InitialDirectory = LastDirectory;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
@@ -191,8 +192,9 @@ namespace GmHelper
         }
         private void extra_2_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(F1Text11, F1Text2);
+            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = F1Text11;
             openFileDialog1.InitialDirectory = LastDirectory;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
@@ -238,7 +240,6 @@ namespace GmHelper
                 form.Close();
             }
         }
-
         private void extra_2_Button_Click(object sender, EventArgs e)
         {
 
