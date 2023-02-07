@@ -22,3 +22,6 @@ ChangeLog.
 Se ha agregado una nueva función la cual permite buscar directamente en WowHead ya sea por ID o nombre de la misión.
 
 
+07/02/23
+
+Permite seleccionar un maximo de 2 archivos de notas rapidas.
