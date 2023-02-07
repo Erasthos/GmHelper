@@ -12,6 +12,7 @@ namespace GmHelper
         private string macrosfolderPath = string.Empty;
         private string extraPath_1 = string.Empty;
         private string extraPath_2 = string.Empty;
+        private string LastDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         private readonly string F1Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
         private readonly string F1Text2 = "Configuración.";
         private readonly string F1Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
@@ -165,13 +166,14 @@ namespace GmHelper
         {
             MessageBox.Show(F1Text11, F1Text2);
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            openFileDialog1.InitialDirectory = LastDirectory;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 extraPath_1 = openFileDialog1.FileName;
+                LastDirectory = Path.GetDirectoryName(openFileDialog1.FileName);
                 RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
                 registryKey.SetValue("extraPath_1", extraPath_1);
                 registryKey.Close();
@@ -191,13 +193,14 @@ namespace GmHelper
         {
             MessageBox.Show(F1Text11, F1Text2);
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            openFileDialog1.InitialDirectory = LastDirectory;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 extraPath_2 = openFileDialog1.FileName;
+                LastDirectory = Path.GetDirectoryName(openFileDialog1.FileName);
                 RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
                 registryKey.SetValue("extraPath_2", extraPath_2);
                 registryKey.Close();
