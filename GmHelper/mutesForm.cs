@@ -31,7 +31,7 @@ namespace GmHelper
                         {
                             TextBox textBox = new TextBox();
                             textBox.Text = line;
-                            textBox.ReadOnly = true;
+                            textBox.ReadOnly = false;
                             textBox.Location = new Point(10, y);
                             textBox.Width = 550;
                             Button button = new Button();

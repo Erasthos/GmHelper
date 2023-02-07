@@ -10,7 +10,8 @@ namespace GmHelper
     public partial class Form1 : Form
     {
         private string macrosfolderPath = string.Empty;
-        private string mutesPath = string.Empty;
+        private string extraPath_1 = string.Empty;
+        private string extraPath_2 = string.Empty;
         private readonly string F1Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
         private readonly string F1Text2 = "Configuración.";
         private readonly string F1Text3 = "Se encontraron coincidencias en los siguientes archivos:\n\n";
@@ -18,8 +19,7 @@ namespace GmHelper
         private readonly string F1Text5 = "No se encontraron coincidencias.";
         private readonly string F1Text6 = "ID misión";
         private readonly string F1Text8 = "Buscar";
-        private readonly string F1Text9 = "Mutes";
-        private readonly string F1Text11 = "Seleccione el archivo donde se encuentran sus sanciones.";
+        private readonly string F1Text11 = "Seleccione el archivo de notas.";
 
 
         public Form1()
@@ -31,19 +31,24 @@ namespace GmHelper
 
             searchTextBox.Text = F1Text6;
             searchButton.Text = F1Text8;
-            mutesButton.Text = F1Text9;
+            
 
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
             if (registryKey != null)
             {
                 macrosfolderPath = (string)registryKey.GetValue("macrosfolderPath");
-                mutesPath = (string)registryKey.GetValue("mutesPath");
+                extraPath_1 = (string)registryKey.GetValue("extraPath_1");
+                extraPath_2 = (string)registryKey.GetValue("extraPath_2");
                 registryKey.Close();
+                extra_1_Button.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(extraPath_1));
+                extra_1_ToolStripMenuItem.Text = "Notas("+extra_1_Button.Text+")";
+                extra_2_Button.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(extraPath_2));
+                extra_2_ToolStripMenuItem.Text = "Notas(" + extra_2_Button.Text + ")";
             }
             else
             {
                 macrosToolStripMenuItem_Click(null, EventArgs.Empty);
-                mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+                
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
@@ -156,7 +161,7 @@ namespace GmHelper
                 }
             }
         }
-        private void mutesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void extra_1_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(F1Text11, F1Text2);
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -166,42 +171,92 @@ namespace GmHelper
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                mutesPath = openFileDialog1.FileName;
+                extraPath_1 = openFileDialog1.FileName;
                 RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
-                registryKey.SetValue("mutesPath", mutesPath);
+                registryKey.SetValue("extraPath_1", extraPath_1);
                 registryKey.Close();
+                extra_1_Button.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(extraPath_1));
+                extra_1_ToolStripMenuItem.Text = "Notas(" + extra_1_Button.Text + ")";
+
             }
             else
             {
-                if (mutesPath.Length == 0)
+                if (extraPath_1.Length == 0)
                 {
-                    mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+                    extra_1_ToolStripMenuItem_Click(null, EventArgs.Empty);
                 }
             }
         }
-        private void mutesButton_Click(object sender, EventArgs e)
+        private void extra_2_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(F1Text11, F1Text2);
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                extraPath_2 = openFileDialog1.FileName;
+                RegistryKey registryKey = Registry.CurrentUser.CreateSubKey("SOFTWARE\\GmHelper");
+                registryKey.SetValue("extraPath_2", extraPath_2);
+                registryKey.Close();
+                extra_2_Button.Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Path.GetFileNameWithoutExtension(extraPath_2));
+                extra_2_ToolStripMenuItem.Text = "Notas(" + extra_2_Button.Text + ")";
+
+            }
+            else
+            {
+                if (extraPath_2.Length == 0)
+                {
+                    extra_2_ToolStripMenuItem_Click(null, EventArgs.Empty);
+                }
+            }
+        }
+        private void extra_1_Button_Click(object sender, EventArgs e)
         {
 
             mutesForm form = Application.OpenForms.OfType<mutesForm>().FirstOrDefault();
 
-            if (!File.Exists(mutesPath))
+            if (!File.Exists(extraPath_1))
             {
-                mutesToolStripMenuItem_Click(null, EventArgs.Empty);
+                extra_1_ToolStripMenuItem_Click(null, EventArgs.Empty);
                 
 
             }
 
-            if (form == null && mutesPath != String.Empty)
+            if (form == null && extraPath_1 != String.Empty)
             {
-                mutesForm frm = new mutesForm(mutesPath);
+                mutesForm frm = new mutesForm(extraPath_1);
                 frm.Show();              
             }
             else
             {
                 form.Close();
             }
-        }       
-        
+        }
 
+        private void extra_2_Button_Click(object sender, EventArgs e)
+        {
+
+            mutesForm form = Application.OpenForms.OfType<mutesForm>().FirstOrDefault();
+
+            if (!File.Exists(extraPath_2))
+            {
+                extra_1_ToolStripMenuItem_Click(null, EventArgs.Empty);
+
+
+            }
+
+            if (form == null && extraPath_2 != String.Empty)
+            {
+                mutesForm frm = new mutesForm(extraPath_2);
+                frm.Show();
+            }
+            else
+            {
+                form.Close();
+            }
+        }
     }
 }
