@@ -9,7 +9,7 @@ namespace GmHelper
 {
     public partial class Form1 : Form
     {
-        private string macrosfolderPath = String.Empty;
+        private string macrosfolderPath = string.Empty;
         private string mutesPath = string.Empty;
         private readonly string F1Text1 = "Seleccione la carpeta donde se encuentran sus macros.";
         private readonly string F1Text2 = "Configuración.";
@@ -21,20 +21,19 @@ namespace GmHelper
         private readonly string F1Text9 = "Mutes";
         private readonly string F1Text11 = "Seleccione el archivo donde se encuentran sus sanciones.";
 
+
         public Form1()
         {
             InitializeComponent();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+
             searchTextBox.Text = F1Text6;
             searchButton.Text = F1Text8;
             mutesButton.Text = F1Text9;
 
             RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\GmHelper");
-
-         
-
             if (registryKey != null)
             {
                 macrosfolderPath = (string)registryKey.GetValue("macrosfolderPath");
@@ -161,7 +160,7 @@ namespace GmHelper
         {
             MessageBox.Show(F1Text11, F1Text2);
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
             openFileDialog1.FilterIndex = 1;
             openFileDialog1.RestoreDirectory = true;
@@ -202,6 +201,7 @@ namespace GmHelper
                 form.Close();
             }
         }       
+        
 
     }
 }
