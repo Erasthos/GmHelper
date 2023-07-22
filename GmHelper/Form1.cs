@@ -149,7 +149,7 @@ namespace GmHelper
             }
             else
             {
-                // DialogResult result = MessageBox.Show("cadena", F1Text5, MessageBoxButtons.YesNo, MessageBoxIcon.None);
+                
                 if (!success )
                 {
                     
